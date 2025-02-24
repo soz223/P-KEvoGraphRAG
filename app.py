@@ -49,7 +49,7 @@ def populate_graph():
             CREATE (s6:Skill {name: "LaTeX"})
             // Projects
             CREATE (p1:Project {name: "BrainNet", description: "AI-driven benchmarking system for brain network generation and analysis", start: "ongoing", datasets: ["ADNI", "ADHD", "LEMON", "HCP"]})
-            CREATE (p2:Project {name: "Normative Modeling for Precise Identification of Alzheimer’s Disease", description: "Normative modeling using focal loss and adversarial autoencoders", status: "under review MICCAI’24", datasets: ["fMRI", "AV45", "FDG", "VBM"]})
+            CREATE (p2:Project {name: "Normative Modeling for Precise Identification of Alzheimer's Disease", description: "Normative modeling using focal loss and adversarial autoencoders", status: "under review MICCAI'24", datasets: ["fMRI", "AV45", "FDG", "VBM"]})
             CREATE (p3:Project {name: "Backdoor Attack in Pretrained Reinforcement Learning", description: "Backdoor attack and defense in pretrained RL models", start: "July 2022", end: "February 2023"})
             CREATE (p4:Project {name: "Day Trading Model Experiment with High-Frequency Trading Data", description: "Deep learning for day trading with high-frequency data"})
             // Awards
@@ -62,7 +62,7 @@ def populate_graph():
             CREATE (a7:Award {name: "Outstanding Project in National Innovation and Entrepreneurship Contest", year: "2021"})
             CREATE (a8:Award {name: "Outstanding Student Head of Tongji University", year: "2021"})
             // Conferences and Journals
-            CREATE (c1:Conference {name: "MICCAI’24", year: "2024"})
+            CREATE (c1:Conference {name: "MICCAI'24", year: "2024"})
             CREATE (c2:Conference {name: "ACM SIGKDD Conference on Knowledge Discovery and Data Mining", year: "2024"})
             CREATE (jr1:Journal {name: "ACM Transactions on Knowledge Discovery from Data (TKDD)"})
             // Relationships
@@ -133,7 +133,7 @@ def retrieve_info_from_graph():
             awards = record["awards"]
             reviewOrgs = record["reviewOrgs"]
             
-            context = "Hey, I’m Songlin Zhao! Here’s a bit about me:\n"
+            context = "Hey, I'm Songlin Zhao! Here's a bit about me:\n"
             context += f"- Name: {p['name']}\n"
             context += f"- Email: {p['email']}\n"
             context += f"- Phone: {p['phone']}\n"
@@ -150,17 +150,17 @@ def retrieve_info_from_graph():
                     context += f"  Thesis: {edu['thesis']}\n"
                 context += f"  Supervisor: {edu['supervisor']}\n"
             
-            context += "\nWhere I’ve Worked:\n"
+            context += "\nWhere I've Worked:\n"
             for job, org in zip(jobs, workOrgs):
                 context += f"- {job['title']} at {org['name']}, {job['start']} - {job['end']}\n"
                 if 'research_topic' in job:
                     context += f"  Research Topic: {job['research_topic']}\n"
                 context += f"  Supervisor: {job['supervisor']}\n"
             
-            context += "\nSkills I’ve Got:\n"
+            context += "\nSkills I've Got:\n"
             context += ", ".join([skill['name'] for skill in skills]) + "\n"
             
-            context += "\nProjects I’ve Tackled:\n"
+            context += "\nProjects I've Tackled:\n"
             for proj in projects:
                 context += f"- {proj['name']}: {proj['description']}\n"
                 if 'start' in proj or 'end' in proj:
@@ -170,7 +170,7 @@ def retrieve_info_from_graph():
                 if 'datasets' in proj:
                     context += f"  Datasets: {', '.join(proj['datasets'])}\n"
             
-            context += "\nAwards I’m Proud Of:\n"
+            context += "\nAwards I'm Proud Of:\n"
             for award in awards:
                 context += f"- {award['name']}"
                 if 'year' in award:
@@ -188,14 +188,14 @@ def retrieve_info_from_graph():
                 context += f"- {reviewOrg['name']}\n"
             
             return context
-        return "Oops, looks like I can’t find my own info—pretty embarrassing, huh?"
+        return "Oops, looks like I can't find my own info—pretty embarrassing, huh?"
 
 # Function to generate a response using Gemini API
 def generate_response(query):
     context = retrieve_info_from_graph()
     
     # Human-like prompt as Songlin
-    prompt = f"{context}\n\nHey there! You asked: '{query}'. I’ll do my best to answer as Songlin—keep it casual and fun, no robotic stuff, and if I don’t know, I’ll just say so naturally. If questions asked about feelings, always say something optimistic. Here goes:"
+    prompt = f"{context}\n\nHey there! You asked: '{query}'. I'll do my best to answer as Songlin—keep it casual and fun, no robotic stuff, and if I don't know, just say so naturally. If questions asked about feelings, always say something optimistic. Here goes:"
     
     headers = {"Content-Type": "application/json"}
     url = f"{API_URL}?key={API_KEY}"
@@ -215,14 +215,14 @@ def generate_response(query):
         response_json = response.json()
         if "error" in response_json:
             print(f"API Error: {response_json['error']}")
-            return "Ugh, something went wrong with my brain (well, the API). Can’t answer that right now—try again?"
+            return "Ugh, something went wrong with my brain (well, the API). Can't answer that right now—try again?"
         return response_json["candidates"][0]["content"]["parts"][0]["text"]
     except requests.exceptions.RequestException as e:
         print(f"Request Error: {e}")
-        return "Hey, my connection’s acting up—can’t reach the outside world right now. Maybe ask me something else?"
+        return "Hey, my connection's acting up—can't reach the outside world right now. Maybe ask me something else?"
     except (json.JSONDecodeError, KeyError, IndexError) as e:
         print(f"Response Parsing Error: {e}")
-        return "Whoops, I got a bit scrambled there. Can’t quite figure that one out—ask me again?"
+        return "Whoops, I got a bit scrambled there. Can't quite figure that one out—ask me again?"
 
 
 
@@ -325,7 +325,7 @@ def generate_response(query):
 # def generate_response(query):
 #     context = retrieve_info_from_graph()
 #     if context == "No information found.":
-#         return "I don’t have enough information to answer your question."
+#         return "I don't have enough information to answer your question."
     
 #     prompt = f"{context}\n\nNow, answer the question concisely: {query}"
     
@@ -370,6 +370,6 @@ def home():
 if __name__ == '__main__':
     try:
         populate_graph()
-        app.run(debug=True, port=5000)
+        app.run(debug=True, host="0.0.0.0", port=5000)
     except Exception as e:
         print(f"Startup Error: {e}")

@@ -3,9 +3,6 @@ import requests
 import json
 from flask_cors import CORS
 from neo4j import GraphDatabase
-from datetime import datetime
-import os
-import socket
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -27,29 +24,6 @@ NEO4J_URI = "bolt://localhost:7687"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "password"  # Replace with your actual password
 driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
-
-
-# Log file setup
-LOG_DIR = "logs"
-LOG_FILE = os.path.join(LOG_DIR, "user_history.json")
-if not os.path.exists(LOG_DIR):
-    os.makedirs(LOG_DIR)
-
-# Function to log user interaction
-def log_interaction(user_ip, timestamp, user_request, response):
-    log_entry = {
-        "timestamp": timestamp.isoformat(),
-        "user_ip": user_ip,
-        "hostname": socket.gethostname(),
-        "request": user_request,
-        "response": response,
-        "server_time": datetime.now().isoformat()
-    }
-    
-    # Append the log entry as a single JSON object on a new line
-    with open(LOG_FILE, 'a', encoding='utf-8') as f:
-        json.dump(log_entry, f, ensure_ascii=False)
-        f.write('\n')
 
 # Function to populate the knowledge graph with resume information
 def populate_graph():
@@ -216,9 +190,11 @@ def retrieve_info_from_graph():
             return context
         return "Oops, looks like I can't find my own info—pretty embarrassing, huh?"
 
-# Function to generate response (modified to include logging)
-def generate_response(query, user_ip):
+# Function to generate a response using Gemini API
+def generate_response(query):
     context = retrieve_info_from_graph()
+    
+    # Human-like prompt as Songlin
     prompt = f"{context}\n\nHey there! You asked: '{query}'. I'll do my best to answer as Songlin—keep it casual and fun, no robotic stuff, and if I don't know, just say so naturally. If questions asked about feelings, always say something optimistic. Here goes:"
     
     headers = {"Content-Type": "application/json"}
@@ -226,48 +202,168 @@ def generate_response(query, user_ip):
     data = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
-            "temperature": 0.9,
+            "temperature": 0.9,  # Higher for more creativity and flexibility
             "topK": 40,
             "topP": 0.95,
-            "maxOutputTokens": 512
+            "maxOutputTokens": 512  # Still constrained
         }
     }
     
-    timestamp = datetime.utcnow()
     try:
         response = requests.post(url, headers=headers, json=data)
         response.raise_for_status()
         response_json = response.json()
         if "error" in response_json:
             print(f"API Error: {response_json['error']}")
-            error_response = "Ugh, something went wrong with my brain (well, the API). Can't answer that right now—try again?"
-            log_interaction(user_ip, timestamp, query, error_response)
-            return error_response
-        generated_response = response_json["candidates"][0]["content"]["parts"][0]["text"]
-        log_interaction(user_ip, timestamp, query, generated_response)
-        return generated_response
+            return "Ugh, something went wrong with my brain (well, the API). Can't answer that right now—try again?"
+        return response_json["candidates"][0]["content"]["parts"][0]["text"]
     except requests.exceptions.RequestException as e:
         print(f"Request Error: {e}")
-        error_response = "Hey, my connection's acting up—can't reach the outside world right now. Maybe ask me something else?"
-        log_interaction(user_ip, timestamp, query, error_response)
-        return error_response
+        return "Hey, my connection's acting up—can't reach the outside world right now. Maybe ask me something else?"
     except (json.JSONDecodeError, KeyError, IndexError) as e:
         print(f"Response Parsing Error: {e}")
-        error_response = "Whoops, I got a bit scrambled there. Can't quite figure that one out—ask me again?"
-        log_interaction(user_ip, timestamp, query, error_response)
-        return error_response
+        return "Whoops, I got a bit scrambled there. Can't quite figure that one out—ask me again?"
 
-# Flask routes (modified to include IP capture)
+
+
+# # Function to retrieve all information from the graph
+# def retrieve_info_from_graph():
+#     with driver.session() as session:
+#         result = session.run("""
+#             MATCH (p:Person {name: "Songlin Zhao"})
+#             OPTIONAL MATCH (p)-[:HAS_EDUCATION]->(edu:Education)
+#             OPTIONAL MATCH (edu)-[:AT]->(orgEdu:Organization)
+#             OPTIONAL MATCH (p)-[:WORKED_AT]->(orgWork:Organization)
+#             OPTIONAL MATCH (p)-[:HELD_POSITION]->(job:Job)
+#             OPTIONAL MATCH (p)-[:HAS_SKILL]->(skill:Skill)
+#             OPTIONAL MATCH (p)-[:LED_PROJECT|WORKED_ON]->(proj:Project)
+#             OPTIONAL MATCH (proj)-[:SUBMITTED_TO]->(conf:Conference)
+#             OPTIONAL MATCH (p)-[:RECEIVED]->(award:Award)
+#             OPTIONAL MATCH (p)-[:REVIEWED_FOR]->(reviewOrg)
+#             RETURN p, 
+#                    collect(DISTINCT edu) AS educations, 
+#                    collect(DISTINCT orgEdu) AS eduOrgs, 
+#                    collect(DISTINCT orgWork) AS workOrgs, 
+#                    collect(DISTINCT job) AS jobs, 
+#                    collect(DISTINCT skill) AS skills, 
+#                    collect(DISTINCT proj) AS projects, 
+#                    collect(DISTINCT conf) AS conferences, 
+#                    collect(DISTINCT award) AS awards, 
+#                    collect(DISTINCT reviewOrg) AS reviewOrgs
+#         """)
+#         record = result.single()
+#         if record:
+#             p = record["p"]
+#             educations = record["educations"]
+#             eduOrgs = record["eduOrgs"]
+#             workOrgs = record["workOrgs"]
+#             jobs = record["jobs"]
+#             skills = record["skills"]
+#             projects = record["projects"]
+#             conferences = record["conferences"]
+#             awards = record["awards"]
+#             reviewOrgs = record["reviewOrgs"]
+            
+#             context = "Here is some information about Songlin Zhao:\n"
+#             context += f"- Name: {p['name']}\n"
+#             context += f"- Email: {p['email']}\n"
+#             context += f"- Phone: {p['phone']}\n"
+#             context += f"- Address: {p['address']}\n\n"
+            
+#             context += "Education:\n"
+#             for edu, org in zip(educations, eduOrgs):
+#                 context += f"- {edu['degree']} in {edu['major']}, {org['name']}, {edu['start']} - {edu['end']}\n"
+#                 if 'gpa' in edu:
+#                     context += f"  GPA: {edu['gpa']}\n"
+#                 if 'research_topic' in edu:
+#                     context += f"  Research Topic: {edu['research_topic']}\n"
+#                 if 'thesis' in edu:
+#                     context += f"  Thesis: {edu['thesis']}\n"
+#                 context += f"  Supervisor: {edu['supervisor']}\n"
+            
+#             context += "\nWork Experience:\n"
+#             for job, org in zip(jobs, workOrgs):
+#                 context += f"- {job['title']} at {org['name']}, {job['start']} - {job['end']}\n"
+#                 if 'research_topic' in job:
+#                     context += f"  Research Topic: {job['research_topic']}\n"
+#                 context += f"  Supervisor: {job['supervisor']}\n"
+            
+#             context += "\nSkills:\n"
+#             context += ", ".join([skill['name'] for skill in skills]) + "\n"
+            
+#             context += "\nProjects:\n"
+#             for proj in projects:
+#                 context += f"- {proj['name']}: {proj['description']}\n"
+#                 if 'start' in proj or 'end' in proj:
+#                     context += f"  Duration: {proj.get('start', 'N/A')} - {proj.get('end', 'N/A')}\n"
+#                 if 'status' in proj:
+#                     context += f"  Status: {proj['status']}\n"
+#                 if 'datasets' in proj:
+#                     context += f"  Datasets: {', '.join(proj['datasets'])}\n"
+            
+#             context += "\nAwards:\n"
+#             for award in awards:
+#                 context += f"- {award['name']}"
+#                 if 'year' in award:
+#                     context += f", {award['year']}"
+#                 elif 'years' in award:
+#                     context += f", {', '.join(award['years'])}"
+#                 context += "\n"
+#                 if 'organization' in award:
+#                     context += f"  Organization: {award['organization']}\n"
+#                 if 'rank' in award:
+#                     context += f"  Rank: {award['rank']}\n"
+            
+#             context += "\nReviewer For:\n"
+#             for reviewOrg in reviewOrgs:
+#                 context += f"- {reviewOrg['name']}\n"
+            
+#             return context
+#         return "No information found."
+
+# # Function to generate a response using Gemini API
+# def generate_response(query):
+#     context = retrieve_info_from_graph()
+#     if context == "No information found.":
+#         return "I don't have enough information to answer your question."
+    
+#     prompt = f"{context}\n\nNow, answer the question concisely: {query}"
+    
+#     headers = {"Content-Type": "application/json"}
+#     url = f"{API_URL}?key={API_KEY}"
+#     data = {
+#         "contents": [{"parts": [{"text": prompt}]}],
+#         "generationConfig": {
+#             "temperature": 0.7,
+#             "topK": 40,
+#             "topP": 0.95,
+#             "maxOutputTokens": 512  # Reduced from 1024 to constraint response length
+#         }
+#     }
+    
+#     try:
+#         response = requests.post(url, headers=headers, json=data)
+#         response.raise_for_status()
+#         response_json = response.json()
+#         if "error" in response_json:
+#             print(f"API Error: {response_json['error']}")
+#             return "An error occurred while processing your request."
+#         return response_json["candidates"][0]["content"]["parts"][0]["text"]
+#     except requests.exceptions.RequestException as e:
+#         print(f"Request Error: {e}")
+#         return "There was a problem connecting to the API."
+#     except (json.JSONDecodeError, KeyError, IndexError) as e:
+#         print(f"Response Parsing Error: {e}")
+#         return "Error processing API response."
+
+# Flask routes
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    user_ip = request.remote_addr  # Capture user's IP address
     if request.method == 'POST':
         question = request.form.get('question')
         if not question:
-            error_response = "Please enter a question"
-            log_interaction(user_ip, datetime.utcnow(), "", error_response)
-            return jsonify({"response": error_response}), 400
-        response = generate_response(question, user_ip)
+            return jsonify({"response": "Please enter a question"}), 400
+        response = generate_response(question)
         return jsonify({'response': response})
     return render_template('index.html')
 

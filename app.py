@@ -10,13 +10,16 @@ from openai import OpenAI
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# DeepSeek API setup using OpenAI SDK
-client = OpenAI(api_key="sk-de2d6ae235fb453994acd831ef0783fd", base_url="https://api.deepseek.com")
+# DeepSeek API setup using OpenAI SDK with environment variable
+API_KEY = os.environ.get("DEEPSEEK_API_KEY")
+if not API_KEY:
+    raise ValueError("DEEPSEEK_API_KEY environment variable not set")
+client = OpenAI(api_key=API_KEY, base_url="https://api.deepseek.com")
 
 # Neo4j setup
-NEO4J_URI = "bolt://localhost:7687"
-NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "password"  # Replace with your actual password
+NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7687")  # Default if not set
+NEO4J_USER = os.environ.get("NEO4J_USER", "neo4j")
+NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD", "password")  # Replace or set via env
 driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
 
 # Log file setup
@@ -24,6 +27,9 @@ LOG_DIR = "logs"
 LOG_FILE = os.path.join(LOG_DIR, "user_history.json")
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
+
+# In-memory chat history (user_ip -> list of messages)
+chat_history = {}
 
 # Function to log user interaction
 def log_interaction(user_ip, timestamp, user_request, response):
@@ -206,19 +212,24 @@ def retrieve_info_from_graph():
             return context
         return "Oops, looks like I can't find my own info—pretty embarrassing, huh?"
 
-# Function to generate response using OpenAI SDK
+# Function to generate response with chat history
 def generate_response(query, user_ip):
     context = retrieve_info_from_graph()
-    prompt = f"{context}\n\nHey there! You asked: '{query}'. I'll do my best to answer as Songlin—keep it casual and fun, no robotic stuff, and if I don't know, just say so naturally. If questions asked about feelings, always say something optimistic. Here goes:"
-    
     timestamp = datetime.now(timezone.utc)
+    
+    # Initialize chat history for this user_ip if not exists
+    if user_ip not in chat_history:
+        chat_history[user_ip] = [
+            {"role": "system", "content": "You are Songlin Zhao, a friendly and knowledgeable AI assistant. Here's my background:\n" + context}
+        ]
+    
+    # Append the new user query to the history
+    chat_history[user_ip].append({"role": "user", "content": query})
+    
     try:
         response = client.chat.completions.create(
             model="deepseek-chat",
-            messages=[
-                {"role": "system", "content": "You are Songlin Zhao, a friendly and knowledgeable AI assistant."},
-                {"role": "user", "content": prompt}
-            ],
+            messages=chat_history[user_ip],  # Send the full conversation history
             max_tokens=512,
             temperature=0.9,
             top_p=0.95,
@@ -226,6 +237,13 @@ def generate_response(query, user_ip):
         )
         
         generated_response = response.choices[0].message.content
+        # Append the AI's response to the history
+        chat_history[user_ip].append({"role": "assistant", "content": generated_response})
+        
+        # Limit history size to prevent excessive memory use
+        if len(chat_history[user_ip]) > 10:  # Keep last 10 messages (5 turns)
+            chat_history[user_ip] = chat_history[user_ip][-10:]
+        
         log_interaction(user_ip, timestamp, query, generated_response)
         return generated_response
         

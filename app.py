@@ -1,33 +1,23 @@
 from flask import Flask, request, render_template, jsonify
-import requests
-import json
 from flask_cors import CORS
 from neo4j import GraphDatabase
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 import socket
+import json
+from openai import OpenAI
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# TODO Progress:
-# 1. Make the UI more beautiful - Enhanced in index.html CSS
-# 2. Make the thinking more good - Added better thinking indicator feedback
-# 3. Build a bigger graph - Kept as is (expand as needed later)
-# 4. Consider some situation and tell API to do it - Basic error handling added
-# 5. Insert into my personal website - Ready for integration (use as a route)
-# 6. Constraint on the response amount - Set maxOutputTokens to 512
-
-# Gemini API setup
-API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
-API_KEY = "AIzaSyBNZG2FzvtvK7kGUUTZUL03ECvEkfadnRE"  # Your provided API key
+# DeepSeek API setup using OpenAI SDK
+client = OpenAI(api_key="sk-de2d6ae235fb453994acd831ef0783fd", base_url="https://api.deepseek.com")
 
 # Neo4j setup
 NEO4J_URI = "bolt://localhost:7687"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "password"  # Replace with your actual password
 driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
-
 
 # Log file setup
 LOG_DIR = "logs"
@@ -43,10 +33,9 @@ def log_interaction(user_ip, timestamp, user_request, response):
         "hostname": socket.gethostname(),
         "request": user_request,
         "response": response,
-        "server_time": datetime.now().isoformat()
+        "server_time": datetime.now(timezone.utc).isoformat()
     }
     
-    # Append the log entry as a single JSON object on a new line
     with open(LOG_FILE, 'a', encoding='utf-8') as f:
         json.dump(log_entry, f, ensure_ascii=False)
         f.write('\n')
@@ -121,6 +110,7 @@ def populate_graph():
             CREATE (p)-[:REVIEWED_FOR {year: "2024"}]->(c2)
         """)
         print("Graph populated with Songlin Zhao's profile.")
+
 # Function to retrieve all information from the graph
 def retrieve_info_from_graph():
     with driver.session() as session:
@@ -216,56 +206,44 @@ def retrieve_info_from_graph():
             return context
         return "Oops, looks like I can't find my own info—pretty embarrassing, huh?"
 
-# Function to generate response (modified to include logging)
+# Function to generate response using OpenAI SDK
 def generate_response(query, user_ip):
     context = retrieve_info_from_graph()
     prompt = f"{context}\n\nHey there! You asked: '{query}'. I'll do my best to answer as Songlin—keep it casual and fun, no robotic stuff, and if I don't know, just say so naturally. If questions asked about feelings, always say something optimistic. Here goes:"
     
-    headers = {"Content-Type": "application/json"}
-    url = f"{API_URL}?key={API_KEY}"
-    data = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "temperature": 0.9,
-            "topK": 40,
-            "topP": 0.95,
-            "maxOutputTokens": 512
-        }
-    }
-    
-    timestamp = datetime.utcnow()
+    timestamp = datetime.now(timezone.utc)
     try:
-        response = requests.post(url, headers=headers, json=data)
-        response.raise_for_status()
-        response_json = response.json()
-        if "error" in response_json:
-            print(f"API Error: {response_json['error']}")
-            error_response = "Ugh, something went wrong with my brain (well, the API). Can't answer that right now—try again?"
-            log_interaction(user_ip, timestamp, query, error_response)
-            return error_response
-        generated_response = response_json["candidates"][0]["content"]["parts"][0]["text"]
+        response = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[
+                {"role": "system", "content": "You are Songlin Zhao, a friendly and knowledgeable AI assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=512,
+            temperature=0.9,
+            top_p=0.95,
+            stream=False
+        )
+        
+        generated_response = response.choices[0].message.content
         log_interaction(user_ip, timestamp, query, generated_response)
         return generated_response
-    except requests.exceptions.RequestException as e:
-        print(f"Request Error: {e}")
-        error_response = "Hey, my connection's acting up—can't reach the outside world right now. Maybe ask me something else?"
-        log_interaction(user_ip, timestamp, query, error_response)
-        return error_response
-    except (json.JSONDecodeError, KeyError, IndexError) as e:
-        print(f"Response Parsing Error: {e}")
-        error_response = "Whoops, I got a bit scrambled there. Can't quite figure that one out—ask me again?"
+        
+    except Exception as e:
+        print(f"API Error: {e}")
+        error_response = "Hey, something went wonky with my brain—can’t answer that right now. Maybe try again?"
         log_interaction(user_ip, timestamp, query, error_response)
         return error_response
 
-# Flask routes (modified to include IP capture)
+# Flask routes
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    user_ip = request.remote_addr  # Capture user's IP address
+    user_ip = request.remote_addr
     if request.method == 'POST':
         question = request.form.get('question')
         if not question:
             error_response = "Please enter a question"
-            log_interaction(user_ip, datetime.utcnow(), "", error_response)
+            log_interaction(user_ip, datetime.now(timezone.utc), "", error_response)
             return jsonify({"response": error_response}), 400
         response = generate_response(question, user_ip)
         return jsonify({'response': response})

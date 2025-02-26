@@ -1,0 +1,196 @@
+[4m [0m[4m [0m[4mUNIT                                          [0m[4m [0m[4mLOAD     [0m[4m [0m[4mACTIVE  [0m[4m [0m[4mSUB    [0m[4m [0m[4mDESCRIPTION                                                                  [0m
+  apparmor.service                               loaded    active   [0;38;5;245mexited [0m Load AppArmor profiles
+  [0;38;5;245mapport-autoreport.service                     [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Process error reports when automatic reporting is enabled
+  apport.service                                 loaded    active   [0;38;5;245mexited [0m automatic crash report generation
+  [0;38;5;245mapt-daily-upgrade.service                     [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Daily apt upgrade and clean activities
+  [0;38;5;245mapt-daily.service                             [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Daily apt download activities
+[0;1;38:5:185m●[0m [0;38;5;245mauditd.service                                [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m auditd.service
+  blk-availability.service                       loaded    active   [0;38;5;245mexited [0m Availability of block devices
+  cloud-config.service                           loaded    active   [0;38;5;245mexited [0m Cloud-init: Config Stage
+  cloud-final.service                            loaded    active   [0;38;5;245mexited [0m Cloud-init: Final Stage
+  [0;38;5;245mcloud-init-hotplugd.service                   [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Cloud-init: Hotplug Hook
+  cloud-init-local.service                       loaded    active   [0;38;5;245mexited [0m Cloud-init: Local Stage (pre-network)
+  [0;38;5;245mcloud-init-main.service                       [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Cloud-init: Single Process
+  cloud-init-network.service                     loaded    active   [0;38;5;245mexited [0m Cloud-init: Network Stage
+[0;1;38:5:185m●[0m [0;38;5;245mconnman.service                               [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m connman.service
+[0;1;38:5:185m●[0m [0;38;5;245mconsole-screen.service                        [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m console-screen.service
+  console-setup.service                          loaded    active   [0;38;5;245mexited [0m Set console font and keymap
+  cron.service                                   loaded    active   running Regular background program processing daemon
+  dbus.service                                   loaded    active   running D-Bus System Message Bus
+[0;1;38:5:185m●[0m [0;38;5;245mdisplay-manager.service                       [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m display-manager.service
+  [0;38;5;245mdm-event.service                              [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Device-mapper event daemon
+  [0;38;5;245mdmesg.service                                 [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Save initial kernel messages after boot
+  do-agent.service                               loaded    active   running The DigitalOcean Monitoring Agent
+  [0;38;5;245mdpkg-db-backup.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Daily dpkg database backup service
+[0;1;38:5:185m●[0m [0;38;5;245mdracut-shutdown.service                       [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m dracut-shutdown.service
+  droplet-agent.service                          loaded    active   running The DigitalOcean Droplet Agent
+  [0;38;5;245me2scrub_all.service                           [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Online ext4 Metadata Check for All Filesystems
+  [0;38;5;245me2scrub_reap.service                          [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Remove Stale Online ext4 Metadata Check Snapshots
+  [0;38;5;245memergency.service                             [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Emergency Shell
+[0;1;38:5:185m●[0m [0;38;5;245mfcoe.service                                  [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m fcoe.service
+  finalrd.service                                loaded    active   [0;38;5;245mexited [0m Create final runtime dir for shutdown pivot root
+[0;1;31m●[0m [0;1;31mflask_app.service                             [0m [0;1;38:5:185mnot-found[0m [0;1;31mfailed  [0m [0;1;31mfailed [0m flask_app.service
+  [0;38;5;245mfstrim.service                                [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Discard unused blocks on filesystems from /etc/fstab
+  [0;38;5;245mfwupd-refresh.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Refresh fwupd metadata and update motd
+  [0;38;5;245mgetty-static.service                          [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m getty on tty2-tty6 if dbus and logind are not available
+  getty@tty1.service                             loaded    active   running Getty on tty1
+  [0;38;5;245mgrub-common.service                           [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Record successful boot for GRUB
+  [0;38;5;245mgrub-initrd-fallback.service                  [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m GRUB failed boot detection
+[0;1;38:5:185m●[0m [0;38;5;245mhv_kvp_daemon.service                         [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m hv_kvp_daemon.service
+  [0;38;5;245minitrd-cleanup.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Cleaning Up and Shutting Down Daemons
+  [0;38;5;245minitrd-parse-etc.service                      [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Mountpoints Configured in the Real Root
+  [0;38;5;245minitrd-switch-root.service                    [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Switch Root
+  [0;38;5;245minitrd-udevadm-cleanup-db.service             [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Cleanup udev Database
+[0;1;38:5:185m●[0m [0;38;5;245miscsi-shutdown.service                        [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m iscsi-shutdown.service
+  [0;38;5;245miscsid.service                                [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m iSCSI initiator daemon (iscsid)
+[0;1;38:5:185m●[0m [0;38;5;245mkbd.service                                   [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m kbd.service
+  keyboard-setup.service                         loaded    active   [0;38;5;245mexited [0m Set the console keyboard layout
+  kmod-static-nodes.service                      loaded    active   [0;38;5;245mexited [0m Create List of Static Device Nodes
+  ldconfig.service                               loaded    active   [0;38;5;245mexited [0m Rebuild Dynamic Linker Cache
+  [0;38;5;245mlogrotate.service                             [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Rotate log files
+[0;1;38:5:185m●[0m [0;38;5;245mlvm2-activation-early.service                 [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m lvm2-activation-early.service
+  [0;38;5;245mlvm2-lvmpolld.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m LVM2 poll daemon
+  lvm2-monitor.service                           loaded    active   [0;38;5;245mexited [0m Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling
+  [0;38;5;245mman-db.service                                [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Daily man-db regeneration
+[0;1;38:5:185m●[0m [0;38;5;245mmkinitcpio-generate-shutdown-ramfs.service    [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m mkinitcpio-generate-shutdown-ramfs.service
+  ModemManager.service                           loaded    active   running Modem Manager
+  [0;38;5;245mmodprobe@configfs.service                     [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Load Kernel Module configfs
+  [0;38;5;245mmodprobe@dm_multipath.service                 [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Load Kernel Module dm_multipath
+  [0;38;5;245mmodprobe@drm.service                          [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Load Kernel Module drm
+  [0;38;5;245mmodprobe@efi_pstore.service                   [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Load Kernel Module efi_pstore
+  [0;38;5;245mmodprobe@fuse.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Load Kernel Module fuse
+  [0;38;5;245mmotd-news.service                             [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Message of the Day
+  multipathd.service                             loaded    active   running Device-Mapper Multipath Device Controller
+  neo4j.service                                  loaded    active   running Neo4j Graph Database
+  [0;38;5;245mnetplan-ovs-cleanup.service                   [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m OpenVSwitch configuration for cleanup
+  [0;38;5;245mnetworkd-dispatcher.service                   [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Dispatcher daemon for systemd-networkd
+[0;1;38:5:185m●[0m [0;38;5;245mnetworking.service                            [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m networking.service
+[0;1;38:5:185m●[0m [0;38;5;245mNetworkManager.service                        [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m NetworkManager.service
+  [0;38;5;245mopen-iscsi.service                            [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Login to default iSCSI targets
+  [0;38;5;245mopen-vm-tools.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Service for virtual machines hosted on VMware
+[0;1;38:5:185m●[0m [0;38;5;245movsdb-server.service                          [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m ovsdb-server.service
+  P-KEvoGraphRAG.service                         loaded    active   running P-KEvoGraphRAG Flask App
+  [0;38;5;245mplymouth-halt.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Show Plymouth Halt Screen
+  [0;38;5;245mplymouth-kexec.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Show Plymouth Reboot with kexec Screen
+  [0;38;5;245mplymouth-poweroff.service                     [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Show Plymouth Power Off Screen
+  plymouth-quit-wait.service                     loaded    active   [0;38;5;245mexited [0m Hold until boot process finishes up
+  plymouth-quit.service                          loaded    active   [0;38;5;245mexited [0m Terminate Plymouth Boot Screen
+  plymouth-read-write.service                    loaded    active   [0;38;5;245mexited [0m Tell Plymouth To Write Out Runtime Data
+  [0;38;5;245mplymouth-reboot.service                       [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Show Plymouth Reboot Screen
+  [0;38;5;245mplymouth-start.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Show Plymouth Boot Screen
+  [0;38;5;245mplymouth-switch-root-initramfs.service        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Tell Plymouth To Jump To initramfs
+  [0;38;5;245mplymouth-switch-root.service                  [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Plymouth switch root service
+  polkit.service                                 loaded    active   running Authorization Manager
+  [0;38;5;245mpollinate.service                             [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Pollinate to seed the pseudo random number generator
+[0;1;38:5:185m●[0m [0;38;5;245mrbdmap.service                                [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m rbdmap.service
+  [0;38;5;245mrc-local.service                              [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m /etc/rc.local Compatibility
+  [0;38;5;245mrescue.service                                [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Rescue Shell
+  rsyslog.service                                loaded    active   running System Logging Service
+  [0;38;5;245msecureboot-db.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Secure Boot updates for DB and DBX
+  serial-getty@ttyS0.service                     loaded    active   running Serial Getty on ttyS0
+  setvtrgb.service                               loaded    active   [0;38;5;245mexited [0m Set console scheme
+  snapd.apparmor.service                         loaded    active   [0;38;5;245mexited [0m Load AppArmor profiles managed internally by snapd
+  [0;38;5;245msnapd.autoimport.service                      [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Auto import assertions from block devices
+  [0;38;5;245msnapd.core-fixup.service                      [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Automatically repair incorrect owner/permissions on core devices
+  [0;38;5;245msnapd.failure.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Failure handling of the snapd snap
+  [0;38;5;245msnapd.recovery-chooser-trigger.service        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Wait for the Ubuntu Core chooser trigger
+  snapd.seeded.service                           loaded    active   [0;38;5;245mexited [0m Wait until snapd is fully seeded
+  [0;38;5;245msnapd.service                                 [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Snap Daemon
+  [0;38;5;245msnapd.snap-repair.service                     [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Automatically fetch and run repair assertions
+  [0;38;5;245msnapd.system-shutdown.service                 [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Ubuntu core (all-snaps) system shutdown helper setup service
+  ssh.service                                    loaded    active   running OpenBSD Secure Shell server
+[0;1;38:5:185m●[0m [0;38;5;245msshd-keygen.service                           [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m sshd-keygen.service
+[0;1;38:5:185m●[0m [0;38;5;245msshd.service                                  [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m sshd.service
+  [0;38;5;245msysstat-collect.service                       [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m system activity accounting tool
+  [0;38;5;245msysstat-rotate.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m system activity accounting tool
+  [0;38;5;245msysstat-summary.service                       [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Generate a daily summary of process accounting
+  sysstat.service                                loaded    active   [0;38;5;245mexited [0m Resets System Activity Logs
+  [0;38;5;245msystemd-ask-password-console.service          [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Dispatch Password Requests to Console
+  [0;38;5;245msystemd-ask-password-plymouth.service         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Forward Password Requests to Plymouth
+  [0;38;5;245msystemd-ask-password-wall.service             [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Forward Password Requests to Wall
+  [0;38;5;245msystemd-battery-check.service                 [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Check battery level during early boot
+  systemd-binfmt.service                         loaded    active   [0;38;5;245mexited [0m Set Up Additional Binary Formats
+  [0;38;5;245msystemd-bsod.service                          [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Display Boot-Time Emergency Messages In Full Screen
+  [0;38;5;245msystemd-firstboot.service                     [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m First Boot Wizard
+  systemd-fsck-root.service                      loaded    active   [0;38;5;245mexited [0m File System Check on Root Device
+  systemd-fsck@dev-disk-by\x2dlabel-BOOT.service loaded    active   [0;38;5;245mexited [0m File System Check on /dev/disk/by-label/BOOT
+  systemd-fsck@dev-disk-by\x2dlabel-UEFI.service loaded    active   [0;38;5;245mexited [0m File System Check on /dev/disk/by-label/UEFI
+  [0;38;5;245msystemd-fsckd.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m File System Check Daemon to report status
+  [0;38;5;245msystemd-halt.service                          [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m System Halt
+  [0;38;5;245msystemd-hibernate-clear.service               [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Clear Stale Hibernate Storage Info
+  [0;38;5;245msystemd-hibernate-resume.service              [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Resume from hibernation
+  [0;38;5;245msystemd-hibernate.service                     [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m System Hibernate
+  [0;38;5;245msystemd-hostnamed.service                     [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Hostname Service
+  [0;38;5;245msystemd-hwdb-update.service                   [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Rebuild Hardware Database
+  [0;38;5;245msystemd-hybrid-sleep.service                  [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m System Hybrid Suspend+Hibernate
+  [0;38;5;245msystemd-initctl.service                       [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m initctl Compatibility Daemon
+  systemd-journal-catalog-update.service         loaded    active   [0;38;5;245mexited [0m Rebuild Journal Catalog
+  systemd-journal-flush.service                  loaded    active   [0;38;5;245mexited [0m Flush Journal to Persistent Storage
+  systemd-journald.service                       loaded    active   running Journal Service
+  [0;38;5;245msystemd-kexec.service                         [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Reboot via kexec
+  systemd-logind.service                         loaded    active   running User Login Management
+  [0;38;5;245msystemd-machine-id-commit.service             [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Save Transient machine-id to Disk
+  systemd-modules-load.service                   loaded    active   [0;38;5;245mexited [0m Load Kernel Modules
+  systemd-networkd-persistent-storage.service    loaded    active   [0;38;5;245mexited [0m Enable Persistent Storage in systemd-networkd
+  systemd-networkd-wait-online.service           loaded    active   [0;38;5;245mexited [0m Wait for Network to be Configured
+  systemd-networkd.service                       loaded    active   running Network Configuration
+[0;1;38:5:185m●[0m [0;38;5;245msystemd-oomd.service                          [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m systemd-oomd.service
+  [0;38;5;245msystemd-pcrmachine.service                    [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m TPM PCR Machine ID Measurement
+  [0;38;5;245msystemd-pcrphase-initrd.service               [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m TPM PCR Barrier (initrd)
+  [0;38;5;245msystemd-pcrphase-sysinit.service              [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m TPM PCR Barrier (Initialization)
+  [0;38;5;245msystemd-pcrphase.service                      [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m TPM PCR Barrier (User)
+  [0;38;5;245msystemd-poweroff.service                      [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m System Power Off
+  [0;38;5;245msystemd-pstore.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Platform Persistent Storage Archival
+  [0;38;5;245msystemd-quotacheck-root.service               [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Root File System Quota Check
+[0;1;38:5:185m●[0m [0;38;5;245msystemd-quotacheck.service                    [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m systemd-quotacheck.service
+  systemd-random-seed.service                    loaded    active   [0;38;5;245mexited [0m Load/Save OS Random Seed
+  [0;38;5;245msystemd-reboot.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m System Reboot
+  systemd-remount-fs.service                     loaded    active   [0;38;5;245mexited [0m Remount Root and Kernel File Systems
+  systemd-resolved.service                       loaded    active   running Network Name Resolution
+  [0;38;5;245msystemd-rfkill.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Load/Save RF Kill Switch Status
+  [0;38;5;245msystemd-soft-reboot.service                   [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Reboot System Userspace
+  [0;38;5;245msystemd-suspend-then-hibernate.service        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m System Suspend then Hibernate
+  [0;38;5;245msystemd-suspend.service                       [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m System Suspend
+  systemd-sysctl.service                         loaded    active   [0;38;5;245mexited [0m Apply Kernel Variables
+  [0;38;5;245msystemd-sysext.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Merge System Extension Images into /usr/ and /opt/
+  systemd-sysusers.service                       loaded    active   [0;38;5;245mexited [0m Create System Users
+  systemd-timesyncd.service                      loaded    active   running Network Time Synchronization
+  [0;38;5;245msystemd-tmpfiles-clean.service                [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Cleanup of Temporary Directories
+  systemd-tmpfiles-setup-dev-early.service       loaded    active   [0;38;5;245mexited [0m Create Static Device Nodes in /dev gracefully
+  systemd-tmpfiles-setup-dev.service             loaded    active   [0;38;5;245mexited [0m Create Static Device Nodes in /dev
+  systemd-tmpfiles-setup.service                 loaded    active   [0;38;5;245mexited [0m Create System Files and Directories
+  [0;38;5;245msystemd-tpm2-setup-early.service              [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Early TPM SRK Setup
+  [0;38;5;245msystemd-tpm2-setup.service                    [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m TPM SRK Setup
+  systemd-udev-load-credentials.service          loaded    active   [0;38;5;245mexited [0m Load udev Rules from Credentials
+  [0;38;5;245msystemd-udev-settle.service                   [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Wait for udev To Complete Device Initialization
+  systemd-udev-trigger.service                   loaded    active   [0;38;5;245mexited [0m Coldplug All udev Devices
+  systemd-udevd.service                          loaded    active   running Rule-based Manager for Device Events and Files
+  systemd-update-done.service                    loaded    active   [0;38;5;245mexited [0m Update is Completed
+  [0;38;5;245msystemd-update-utmp-runlevel.service          [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Record Runlevel Change in UTMP
+  systemd-update-utmp.service                    loaded    active   [0;38;5;245mexited [0m Record System Boot/Shutdown in UTMP
+  systemd-user-sessions.service                  loaded    active   [0;38;5;245mexited [0m Permit User Sessions
+[0;1;38:5:185m●[0m [0;38;5;245msystemd-vconsole-setup.service                [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m systemd-vconsole-setup.service
+  [0;38;5;245mtpm-udev.service                              [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Handle dynamically added tpm devices
+[0;1;38:5:185m●[0m [0;38;5;245mua-auto-attach.service                        [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m ua-auto-attach.service
+  [0;38;5;245mua-reboot-cmds.service                        [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Ubuntu Pro reboot cmds
+  [0;38;5;245mua-timer.service                              [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Ubuntu Pro Timer for running repeated jobs
+[0;1;38:5:185m●[0m [0;38;5;245mubuntu-advantage-cloud-id-shim.service        [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m ubuntu-advantage-cloud-id-shim.service
+  [0;38;5;245mubuntu-advantage.service                      [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Ubuntu Pro Background Auto Attach
+  udisks2.service                                loaded    active   running Disk Manager
+  ufw.service                                    loaded    active   [0;38;5;245mexited [0m Uncomplicated firewall
+  unattended-upgrades.service                    loaded    active   running Unattended Upgrades Shutdown
+  [0;38;5;245mupdate-notifier-download.service              [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Download data for packages that failed at package install time
+  [0;38;5;245mupdate-notifier-motd.service                  [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Check to see whether there is a new version of Ubuntu available
+  user-runtime-dir@0.service                     loaded    active   [0;38;5;245mexited [0m User Runtime Directory /run/user/0
+  user@0.service                                 loaded    active   running User Manager for UID 0
+  uuidd.service                                  loaded    active   running Daemon for generating UUIDs
+  [0;38;5;245mvgauth.service                                [0m loaded    [0;38;5;245minactive[0m [0;38;5;245mdead   [0m Authentication service for virtual machines hosted on VMware
+  vpc-peering.service                            loaded    active   [0;38;5;245mexited [0m VPC Peering Route Injection
+[0;1;38:5:185m●[0m [0;38;5;245mzfs-mount.service                             [0m [0;1;38:5:185mnot-found[0m [0;38;5;245minactive[0m [0;38;5;245mdead   [0m zfs-mount.service
+
+[0;38;5;245mLegend: LOAD   → Reflects whether the unit definition was properly loaded.[0m
+[0;38;5;245m        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.[0m
+[0;38;5;245m        SUB    → The low-level unit activation state, values depend on unit type.[0m
+
+[0;1;39m188 loaded units listed.[0m
+[0;38;5;245mTo show all installed unit files use 'systemctl list-unit-files'.[0m

@@ -1,0 +1,151 @@
+{
+    "person": {
+      "name": "Songlin Zhao",
+      "email": "soz223@lehigh.edu",
+      "phone": "(484)937-6390",
+      "address": "Building C, Room 322, 113 Research Drive, Bethlehem, PA, 18015"
+    },
+    "organizations": [
+      {
+        "name": "Lehigh University",
+        "location": "Bethlehem, PA, USA"
+      },
+      {
+        "name": "Tongji University",
+        "location": "Shanghai, China"
+      }
+    ],
+    "education": [
+      {
+        "degree": "Ph.D.",
+        "major": "Computer Science",
+        "university": "Lehigh University",
+        "start": "August 2023",
+        "end": "present",
+        "gpa": "4.0/4.0",
+        "research_topic": "Harnessing Machine Learning for Imbalanced Medical Data Analyses",
+        "supervisor": "Lifang He"
+      },
+      {
+        "degree": "B.S.",
+        "major": "Computer Science",
+        "university": "Tongji University",
+        "start": "September 2019",
+        "end": "July 2023",
+        "thesis": "Learning Financial Data by PatchT with Adversarial Attack Robustness",
+        "supervisor": "Dawei Cheng"
+      }
+    ],
+    "jobs": [
+      {
+        "title": "Intern",
+        "start": "July 2022",
+        "end": "February 2023",
+        "research_topic": "Backdoor Attack in Pretrained Reinforcement Learning",
+        "supervisor": "Lichao Sun",
+        "organization": "Lehigh University"
+      }
+    ],
+    "skills": [
+      {"name": "Python"},
+      {"name": "PyTorch"},
+      {"name": "TensorFlow"},
+      {"name": "Rust"},
+      {"name": "C/C++"},
+      {"name": "LaTeX"}
+    ],
+    "projects": [
+      {
+        "name": "BrainNet",
+        "description": "AI-driven benchmarking system for brain network generation and analysis",
+        "start": "ongoing",
+        "datasets": ["ADNI", "ADHD", "LEMON", "HCP"],
+        "role": "leader",
+        "team": "2 masters, 2 undergrads (2 female)"
+      },
+      {
+        "name": "Normative Modeling for Precise Identification of Alzheimer's Disease",
+        "description": "Normative modeling using focal loss and adversarial autoencoders",
+        "status": "under review MICCAI'24",
+        "datasets": ["fMRI", "AV45", "FDG", "VBM"],
+        "role": "researcher",
+        "submitted_to": "MICCAI'24"
+      },
+      {
+        "name": "Backdoor Attack in Pretrained Reinforcement Learning",
+        "description": "Backdoor attack and defense in pretrained RL models",
+        "start": "July 2022",
+        "end": "February 2023",
+        "role": "researcher"
+      },
+      {
+        "name": "Day Trading Model Experiment with High-Frequency Trading Data",
+        "description": "Deep learning for day trading with high-frequency data",
+        "role": "researcher"
+      }
+    ],
+    "awards": [
+      {
+        "name": "Conference on Machine Learning and Systems Travel Award",
+        "year": "2024"
+      },
+      {
+        "name": "Social Community Engagement Impact Activity Scholarship",
+        "organization": "Tongji University",
+        "years": ["2022", "2021", "2020"]
+      },
+      {
+        "name": "Outstanding Student of Tongji University",
+        "years": ["2022", "2020"]
+      },
+      {
+        "name": "Excellent Scholarship of Tongji University, Second Prize",
+        "years": ["2022", "2020"]
+      },
+      {
+        "name": "Mathematical Contest in Modeling (MCM) Finalist Prize",
+        "year": "2022",
+        "rank": "Top 1.5%"
+      },
+      {
+        "name": "Excellent Scholarship of Tongji University, First Prize",
+        "year": "2021"
+      },
+      {
+        "name": "Outstanding Project in National Innovation and Entrepreneurship Contest",
+        "year": "2021"
+      },
+      {
+        "name": "Outstanding Student Head of Tongji University",
+        "year": "2021"
+      }
+    ],
+    "conferences": [
+      {
+        "name": "MICCAI'24",
+        "year": "2024"
+      },
+      {
+        "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+        "year": "2024"
+      }
+    ],
+    "journals": [
+      {
+        "name": "ACM Transactions on Knowledge Discovery from Data (TKDD)"
+      }
+    ],
+    "reviewed_for": [
+      {
+        "type": "journal",
+        "name": "ACM Transactions on Knowledge Discovery from Data (TKDD)",
+        "start": "2023",
+        "end": "present"
+      },
+      {
+        "type": "conference",
+        "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+        "year": "2024"
+      }
+    ]
+  }

@@ -1,0 +1,107 @@
+
+**Songlin Zhao**  
+**Curriculum Vitae - February 2025**
+
+**A. BIOGRAPHICAL INFORMATION**  
+**Office Address:**  
+Email: soz223@lehigh.edu  
+113 Research Drive  
+Lehigh University  
+Bethlehem, PA, 18015  
+
+**Education and Training**  
+- **Ph.D. in Computer Science, Lehigh University, Bethlehem, PA**  
+  August 2023 - present  
+  Research Topic: Harnessing Machine Learning and Foundation Models for Multimodal Medical Data Analyses  
+  GPA: 4.0/4.0  
+  Supervisor: Lifang He  
+- **Research Intern, Lehigh University, Bethlehem, PA**  
+  July 2022 - February 2023  
+  Research Topic: Backdoor Attack in Pre-Trained Reinforcement Learning  
+  Supervisor: Lichao Sun  
+- **B.S. in Computer Science, Tongji University, Shanghai, China**  
+  September 2019 - July 2023  
+  Thesis: Learning Financial Data by PatchTransformer with Adversarial Attack Robustness  
+  Supervisor: Dawei Cheng  
+
+**B. PUBLICATIONS AND RESEARCH PRODUCTS**  
+**B.1. Peer-Reviewed Articles**  
+1. Xinwei Luo, Songlin Zhao, Yun Zong, Yong Chen, Gui-Shuang Ying, Lifang He. "SegImgNet: SegmentationGuided Dual-Branch Network for Retinal Disease Diagnoses", accepted in AAAI 2025 AI for Health Symposium, Burlingame, California, USA, March 31-April 2, 2025.  
+2. Songlin Zhao, Rong Zhou, Yu Zhang, Yong Chen, Lifang He. "Normative Modeling with Focal Loss and Adversarial Autoencoders for Alzheimer's Disease Diagnosis and Biomarker Identification", in International Conference on Medical Image Computing and Computer Assisted Interventions Workshop on Applications of Medical AI (MICCAI-AMAI), Marrakesh, Morocco, October 6-10, 2024. Publisher: Springer Nature, Pages: 231-240. [Link]  
+3. Xinwei Luo, Songlin Zhao, Yong Chen, Gui-Shuang Ying, Lifang He. "VGG-ST: A VGG-Swin TransformerBased Model for ROP Disease Diagnosis", in IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 2024. Publisher: IEEE, Pages: 4987-4994. [Link]  
+4. Zhaoming Kong, Rong Zhou, Xinwei Luo, Songlin Zhao, Ann B. Ragin, Alex D. Leow, Lifang He. "TGNet: Tensor-Based Graph Convolutional Networks for Multimodal Brain Network Analysis", in BioData Mining, 2024. Volume: 17, Issue: 1, Pages: 1-24. Impact factor: 4.83 [Link]  
+
+**B.2. Pending Review and Ongoing Articles**  
+5. Songlin Zhao, Lifang He. "P-KEvoGraphRAG: Personalized Mimicking Graph Retrieval-Augmented Generation for a Personal Robot", under preparation for NeurIPS 2025, San Diego, USA, 2025. [Link]  
+6. Songlin Zhao, Zhicheng Xu, Ruonan Gong, Jiaxin Chen, Yitian Yang, Keqi Han, Yao Su, Xiang Li, Quanzheng Li, Randy L. Buckner, Daniel, Lichao Sun, Carl Yang, Liang Zhan, Yu Zhang, Lifang He. "BrainNet: A Systematic Benchmark for Functional Brain Network Generation and Analysis", under preparation for Nature Communications, 2025. [Link]  
+7. Keqi Han, Yao Su, Songlin Zhao, Lifang He, Liang Zhan, Xiang Li, Boadie Dunlop, Carl Yang. "AtlasFree Functional Brain Connectome Analysis via Task-Driven Parcellation", under review in Medical Image Computing and Computer Assisted Intervention (MICCAI), Daejeon, South Korea, 2025. [Link]  
+
+**C. RESEARCH AND CREATIVE ACTIVITIES**  
+My research interests are primarily focused on machine learning, foundation models, graph neural networks, and dynamic models, with a particular emphasis on their practical applications in medical data analysis. The aim is to develop and deploy innovative AI methods to harness various data modalities. This area of study spans from the development of foundational algorithms to the resolution of real-world challenges, achieved through collaborative partnerships with various individuals and organizations. I have had the privilege of working alongside my diligent advisor, esteemed scholars, and institutions.  
+
+**C.1. BrainNet: A Benchmark System for Functional Connectivity Generation and Analysis**  
+**Description:** This research presents a systematic benchmark for fMRI graph construction and analysis, leveraging a thorough evaluation of graph construction methods applied to an extensive public dataset. The goal is to assess existing graph construction approaches and identify their optimal applications across different varieties of scenarios. In this comprehensive study, we have achieved the following milestones.  
+- We created a systematic benchmark for fMRI graph construction, integrating over 20 unique functional connectivity methods for edge definition, 6 atlas-based node configurations, and a variety of edge-filtering techniques. These connectivity methods encompass pairwise correlation between Regions of Interest (ROIs), high-order functional connectivity (HOFC), and end-to-end frameworks. By employing sliding-window analysis, we captured both static and dynamic graphs, resulting in a highly representative and extensive dataset.  
+- We conducted comprehensive experiments on the ADNI200, ADHD, and HCP datasets, parcelled with three atlases to ensure a thorough perspective. After preprocessing the fMRI data, we evaluated the graphs using a ResGCN-based model and a Sparse GCN model, analyzing their quality based on classification performance and explainability.  
+- We are finalizing our survey, preparing a paper for submission to Nature Communications, and developing an open-source toolkit for release on GitHub and Huggingface to share our methods with the research community.  
+
+**C.2. Multimodal Normative Modeling for Disease Diagnosis and Cognitive State Prediction**  
+**Description:** This research presents a novel multimodal normative modeling approach leveraging focal loss and adversarial autoencoders, specifically designed to address underrepresented and challenging cases in the data. The objective is to develop an unbiased machine learning model that prioritizes inclusivity for underrepresented groups. Specifically, we have achieved the following milestones.  
+- We pioneered the first multimodal normative modeling framework that seamlessly integrates normative and disease modeling for both disease diagnosis and cognitive state prediction. By leveraging adversarial autoencoders and focal loss, our approach effectively targets the most challenging cases in diseases and cognitive state prediction such as Alzheimer's disease diagnosis and fluid intelligence prediction, addressing key limitations in existing methods.  
+- We conducted a comprehensive evaluation of our approach against state-of-the-art normative methods, including AE, AAE, VAE, CVAE, and ACVAE, across three diverse datasets with multiple imaging modalities—ADNI (VBM-MRI, AV45-PET, FDG-PET), ADHD200 (T1w-MRI, fMRI), and HCP (T1w-MRI, T2w-MRI, fMRI). Our results demonstrated superior predictive performance while significantly enhancing biomarker discovery.  
+- Our preliminary work has been presented and published in the 2024 MICCAI Workshop on Applications of Medical Artificial Intelligence (AMAI). Building on this momentum, we are finalizing a submission to IEEE Transactions on Medical Imaging (TMI), a top-tier journal in medical imaging research.  
+
+**C.3. Atlas-Free Functional Brain Connectome Analysis via Task-Driven Parcellation**  
+**Description:** This project introduces AFCON, an innovative atlas-free framework for functional brain connectome analysis that leverages task-driven parcellation derived directly from fMRI data. AFCON aims to jointly optimize parcellation and downstream network analysis, adaptively identifying biologically plausible, task-specific Regions of Interest (ROIs). This approach is enhanced by novel regularizers that ensure a balanced distribution and spatial compactness of ROIs. Progress and details of the methodology are outlined below.  
+- We developed a novel atlas-free framework for functional brain connectivity analysis, incorporating a balanced distribution regularizer to prevent ROI dominance and a spatial compactness regularizer to promote anatomically localized regions, thereby improving biological plausibility.  
+- We conducted a thorough evaluation using extensive fMRI datasets, such as ADNI and ADHD. After preprocessing the data, we implemented joint optimization of task-driven parcellation and connectome analysis, demonstrating superior performance over atlas-based methods in predictive tasks.  
+- We have finalized our research, and a manuscript describing AFCON's methodology and its success in revealing connectivity patterns and biomarkers is currently under review for MICCAI 2025.  
+
+**C.4. A Graph Foundation Model for Multi-Disease Brain Connectome Analysis**  
+**Description:** This project develops a Graph Foundation Model (GFM) for brain connectome analysis by aggregating imaging data and pre-training a scalable model to generate generalizable graph representations. The goal is to adapt this model using graph-based prompts for few-shot transfer learning, improving performance in tasks such as disease classification and biomarker identification across various neurological conditions. Key milestones are outlined below.  
+- We developed and pre-trained a GFM using a self-supervised learning strategy on constructed brain graphs, integrating functional-anatomical masking and a graph prompt mechanism to enable few-shot transfer learning and facilitate adaptation to specific disease datasets with minimal labeled examples.  
+- We collected and preprocessed neuroimaging data from over 20 public datasets (e.g., ADNI, HCP, UK Biobank), performing brain extraction, registration, parcellation, and time series extraction to construct standardized brain graphs with connectivity matrices derived from multiple atlases.  
+- We evaluated the GFM’s transfer performance against task-specific GNN baselines on targeted disease datasets, achieving superior accuracy and generalization.  
+
+**C.5. P-KEvoGraphRAG: Personalized Knowledge-Evolving GraphRAG Model**  
+**Description:** This project proposes P-KEvoGraphRAG, an advanced framework that extends Graph Retrieval-Augmented Generation (GraphRAG) and leverages large language models (LLMs) to create an adaptive personal robot. The system is designed to use a knowledge graph to mimic an individual’s style, knowledge, and behavior by integrating person-specific data and real-time updates, delivering precise and proactive responses. Key milestones are outlined below:  
+- We developed P-KEvoGraphRAG, a personalized graph retrieval system utilizing a Neo4j-based graph database with text chunking and vectorization for summarization, combined with a self-evolving system driven by large language models (LLMs) for generating hypothetical questions, graph neural networks (GNNs) for modeling relationships, and reinforcement learning for optimization.  
+- We are currently preparing a manuscript for submission to NeurIPS 2025, detailing the framework and its results.  
+
+**C.6. (Propose) Integrating Knowledge Graphs and Multi-Modal Learning for Enhanced Visual Question Answering in Medical Diagnostics**  
+**Description:** We propose a novel framework that integrates Knowledge Graphs (KGs), Multi-Modal Learning, and Visual Question Answering (VQA) to advance diagnostics using medical data. The objective is to develop an intelligent system capable of delivering accurate and interpretable answers to visual questions about medical images, leveraging structured text from UMLS terms and clinical notes, alongside imaging modalities such as X-rays and MRIs. We propose employing advanced techniques in Knowledge Graph construction, Multi-Modal embeddings, and VQA models to achieve this vision.  
+- We propose pioneering a framework that seamlessly combines Knowledge Graphs, Multi-Modal Learning, and Visual Question Answering for medical diagnostics. By leveraging graph-based reasoning with UMLS-derived KGs, multi-modal embeddings for text and images, and attention mechanisms, our approach aims to address limitations in existing VQA systems by incorporating structured medical knowledge.  
+- We propose utilizing BioBERT to process text modalities, including UMLS terms and clinical notes, for extracting medical entities; CheXNet to analyze imaging modalities, such as X-rays and MRIs, to identify abnormalities; and a custom VQA model enhanced with KG embeddings to generate knowledge-informed answers. This framework will integrate these components via a shared embedding space for cohesive multi-modal reasoning.  
+- We propose conducting a comprehensive evaluation of our approach against state-of-the-art VQA models, such as LLaVA and ViLBERT, across diverse datasets with multiple modalities—MIMIC-CXR (X-rays with clinical notes), VQA-Med (X-rays/MRIs with question-answer pairs), and UMLS (structured medical terms). Our goal is to demonstrate superior accuracy and enhanced interpretability through knowledge-backed responses.  
+- We propose targeting a submission to IEEE Transactions on Medical Imaging to disseminate our findings and contribute to the field of medical imaging research.  
+
+**C. HONORS AND AWARDS**  
+1. Upsilon Pi Epsilon (UPE) Honor Society, invited by the CSE department due to full GPA, 2024.  
+2. Student Travel Award of Conference on Machine Learning and Systems, 2024  
+3. Social Community Engagement Impact Activity Scholarship of Tongji University, 2022, 2021, 2020  
+4. Outstanding Student of Tongji University, 2022, 2020  
+5. Outstanding Scholarship of Tongji University, Second Prize, 2022, 2020  
+6. Mathematical Contest in Modeling (MCM) Finalist Prize (Top 1.5%), 2022  
+7. Outstanding Scholarship of Tongji University, First Prize, 2021  
+8. Outstanding Project in National Innovation and Entrepreneurship Contest, 2021  
+9. Outstanding Student Head of Tongji University, 2021  
+
+**D. Service as a Reviewer for Journals and Conferences**  
+- ACM Transactions on Knowledge Discovery from Data (TKDD), 2023-present.  
+- ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2024.  
+- Conference on Neural Information Processing Systems (NeurIPS), 2024.  
+- AAAI 2025 Spring Symposium Series (SSS-25) on AI for Health, 2025.  
+- IEEE SSCI 2025 - 2025 IEEE Symposium on Computational Intelligence in Natural Language Processing and Social Media Companion, 2025.  
+
+**E. CLASSES TAUGHT**  
+- **CSE 262: Programming Languages**  
+  Department of Computer Science and Engineering, Lehigh University, Bethlehem, PA  
+  Served as Teaching Assistant Instructor and Recitation Host for undergraduate students. (Fall 2024)  
+
+**F. SKILLS**  
+- **Programming:** Python, PyTorch, TensorFlow, Rust, C/C++  
+- **Database Technologies:** Neo4j, SQL, Pinecone  
+- **DevOps/Cloud:** Docker, AWS/GCP/Azure/ACCESS-Delta  
+
+**G. PERSONAL WEBSITE**  
+- www.songlin.my (Interact with an LLM version of me! It is enhanced by our P-KEvoGraphRAG)  
